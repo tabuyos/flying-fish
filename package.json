@@ -150,52 +150,62 @@
       {
         "key": "ctrl+f",
         "command": "cursorRight",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !inStickySelectionMode"
       },
       {
         "key": "ctrl+b",
         "command": "cursorLeft",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !inStickySelectionMode"
       },
       {
         "key": "alt+f",
         "command": "cursorWordRight",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !inStickySelectionMode"
       },
       {
         "key": "alt+b",
         "command": "cursorWordLeft",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !inStickySelectionMode"
+      },
+      {
+        "key": "alt+f",
+        "command": "cursorWordRightSelect",
+        "when": "textInputFocus && inStickySelectionMode"
+      },
+      {
+        "key": "alt+b",
+        "command": "cursorWordLeftSelect",
+        "when": "textInputFocus && inStickySelectionMode"
       },
       {
         "key": "ctrl+alt+f",
         "command": "cursorWordPartRight",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !inStickySelectionMode"
       },
       {
         "key": "ctrl+alt+b",
         "command": "cursorWordPartLeft",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !inStickySelectionMode"
       },
       {
         "key": "ctrl+a",
         "command": "cursorHome",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !inStickySelectionMode"
       },
       {
         "key": "ctrl+e",
         "command": "cursorEnd",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !inStickySelectionMode"
       },
       {
         "key": "ctrl+alt+,",
         "command": "cursorTop",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !inStickySelectionMode"
       },
       {
         "key": "ctrl+alt+.",
         "command": "cursorBottom",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !inStickySelectionMode"
       },
       {
         "key": "ctrl+backspace",
@@ -255,12 +265,12 @@
       {
         "key": "ctrl+v",
         "command": "cursorPageDown",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !inStickySelectionMode"
       },
       {
         "key": "alt+v",
         "command": "cursorPageUp",
-        "when": "textInputFocus"
+        "when": "textInputFocus && !inStickySelectionMode"
       },
       {
         "key": "ctrl+c ctrl+k",
@@ -356,16 +366,6 @@
         "key": "alt+,",
         "command": "editor.action.peekDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
-      },
-      {
-        "key": "ctrl+k ctrl+b",
-        "command": "editor.action.setSelectionAnchor",
-        "when": "editorTextFocus"
-      },
-      {
-        "key": "ctrl+k ctrl+k",
-        "command": "editor.action.selectFromAnchorToCursor",
-        "when": "editorTextFocus && selectionAnchorSet"
       },
       {
         "key": "ctrl+,",
