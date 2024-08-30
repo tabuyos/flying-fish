@@ -2,6 +2,11 @@
   "name": "flying-fish",
   "displayName": "Flying Fish Keymap",
   "description": "Flying-Fish Keymap for quickly devlop",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tabuyos/flying-fish.git"
+  },
+  "homepage": "https://github.com/tabuyos/flying-fish",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.92.0"
@@ -65,6 +70,16 @@
       {
         "key": "b",
         "command": "cursorLeft",
+        "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
+      },
+      {
+        "key": "a",
+        "command": "cursorHome",
+        "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
+      },
+      {
+        "key": "e",
+        "command": "cursorEnd",
         "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
       },
       {
@@ -162,6 +177,26 @@
         "when": "textInputFocus"
       },
       {
+        "key": "ctrl+a",
+        "command": "cursorHome",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+e",
+        "command": "cursorEnd",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+alt+,",
+        "command": "cursorTop",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+alt+.",
+        "command": "cursorBottom",
+        "when": "textInputFocus"
+      },
+      {
         "key": "ctrl+backspace",
         "command": "deleteWordLeft",
         "when": "textInputFocus"
@@ -207,6 +242,26 @@
         "command": "workbench.action.showCommands"
       },
       {
+        "key": "alt+p",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "key": "alt+n",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "key": "ctrl+v",
+        "command": "cursorPageDown",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "alt+v",
+        "command": "cursorPageUp",
+        "when": "textInputFocus"
+      },
+      {
         "key": "ctrl+c ctrl+k",
         "command": "editor.action.deleteLines"
       },
@@ -230,6 +285,14 @@
         "key": "ctrl+c ctrl+c",
         "command": "editor.action.showContextMenu",
         "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+c u",
+        "command": "git.pull"
+      },
+      {
+        "key": "ctrl+c p",
+        "command": "git.push"
       },
       {
         "key": "ctrl+j",
@@ -294,7 +357,7 @@
         "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
       },
       {
-        "key": "ctrl+,",
+        "key": "ctrl+k ctrl+b",
         "command": "editor.action.setSelectionAnchor",
         "when": "editorTextFocus"
       },
@@ -302,6 +365,16 @@
         "key": "ctrl+k ctrl+k",
         "command": "editor.action.selectFromAnchorToCursor",
         "when": "editorTextFocus && selectionAnchorSet"
+      },
+      {
+        "key": "ctrl+,",
+        "command": "sticky-selection.enterStickySelectionMode",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "ctrl+space",
+        "command": "-sticky-selection.enterStickySelectionMode",
+        "when": "editorTextFocus"
       },
       {
         "key": "shift+space",
@@ -329,6 +402,7 @@
     "@vscode/test-electron": "^2.4.0"
   },
   "extensionPack": [
-    "ryuta46.multi-command"
+    "ryuta46.multi-command",
+    "ksfunc.vscode-sticky-selection"
   ]
 }
