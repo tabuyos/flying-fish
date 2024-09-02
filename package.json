@@ -15,82 +15,104 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:flying-fish.cursorHome",
+    "onCommand:flying-fish.cursorEnd",
+    "onCommand:flying-fish.cursorUp",
+    "onCommand:flying-fish.cursorDown",
+    "onCommand:flying-fish.cursorLeft",
+    "onCommand:flying-fish.cursorRight",
+    "onCommand:flying-fish.cursorWordRight",
+    "onCommand:flying-fish.cursorWordLeft",
+    "onCommand:flying-fish.cursorWordPartRight",
+    "onCommand:flying-fish.cursorWordPartLeft",
+    "onCommand:flying-fish.cursorTop",
+    "onCommand:flying-fish.cursorBottom",
+    "onCommand:flying-fish.cursorPageDown",
+    "onCommand:flying-fish.cursorPageUp",
+    "onCommand:flying-fish.enableSticky",
+    "onCommand:flying-fish.disableSticky",
+    "onCommand:flying-fish.startLeadering",
+    "onCommand:flying-fish.stopLeadering",
+    "onCommand:flying-fish.clipboardCopyAction",
+    "onCommand:flying-fish.clipboardCutAction",
+    "onCommand:flying-fish.clipboardPasteAction",
+    "onCommand:flying-fish.pickAndPaste"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "flying-fish.enable",
-        "title": "Flying Fish: Enable"
+        "command": "flying-fish.toggleFlyingFish",
+        "title": "Toggle Flying",
+        "category": "Flying Fish"
       },
       {
-        "command": "flying-fish.disable",
-        "title": "Flying Fish: Disable"
-      },
-      {
-        "command": "flying-fish.start",
-        "title": "Flying Fish: Start"
-      },
-      {
-        "command": "flying-fish.stop",
-        "title": "Flying Fish: Stop"
+        "command": "flying-fish.toggleSticky",
+        "title": "Toggle Sticky",
+        "category": "Flying Fish"
       }
     ],
     "keybindings": [
       {
         "key": ",",
-        "command": "flying-fish.start",
+        "command": "flying-fish.startLeadering",
         "when": "editorFocus && flying-fish.enabled"
       },
       {
         "key": ",",
-        "command": "extension.multiCommand.execute",
+        "command": "runCommands",
         "args": {
-          "sequence": [
-            "flying-fish.insert-comma",
-            "flying-fish.stop"
+          "commands": [
+            "flying-fish.insertComma",
+            "flying-fish.stopLeadering"
           ]
         },
         "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
       },
       {
         "key": "space",
-        "command": "flying-fish.stop",
+        "command": "flying-fish.stopLeadering",
         "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
       },
       {
         "key": "escape",
-        "command": "flying-fish.stop",
+        "command": "flying-fish.stopLeadering",
+        "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "flying-fish.stopLeadering",
         "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
       },
       {
         "key": "f",
-        "command": "cursorRight",
+        "command": "flying-fish.cursorRight",
         "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
       },
       {
         "key": "b",
-        "command": "cursorLeft",
+        "command": "flying-fish.cursorLeft",
         "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
       },
       {
         "key": "a",
-        "command": "cursorHome",
+        "command": "flying-fish.cursorHome",
         "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
       },
       {
         "key": "e",
-        "command": "cursorEnd",
+        "command": "flying-fish.cursorEnd",
         "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
       },
       {
         "key": "n",
-        "command": "cursorDown",
+        "command": "flying-fish.cursorDown",
         "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
       },
       {
         "key": "p",
-        "command": "cursorUp",
+        "command": "flying-fish.cursorUp",
         "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
       },
       {
@@ -105,107 +127,128 @@
       },
       {
         "key": "c c",
-        "command": "extension.multiCommand.execute",
+        "command": "runCommands",
         "args": {
-          "sequence": [
+          "commands": [
             "workbench.action.showCommands",
-            "flying-fish.stop"
+            "flying-fish.stopLeadering"
           ]
         },
         "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
       },
       {
         "key": "c k",
-        "command": "extension.multiCommand.execute",
+        "command": "runCommands",
         "args": {
-          "sequence": [
+          "commands": [
             "editor.action.deleteLines",
-            "flying-fish.stop"
+            "flying-fish.stopLeadering"
           ]
         },
         "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
       },
       {
         "key": "c d",
-        "command": "extension.multiCommand.execute",
+        "command": "runCommands",
         "args": {
-          "sequence": [
+          "commands": [
             "editor.action.duplicateSelection",
-            "flying-fish.stop"
+            "flying-fish.stopLeadering"
           ]
         },
         "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
       },
       {
         "key": "c e",
-        "command": "extension.multiCommand.execute",
+        "command": "runCommands",
         "args": {
-          "sequence": [
+          "commands": [
             "workbench.action.showAllEditorsByMostRecentlyUsed",
-            "flying-fish.stop"
+            "flying-fish.stopLeadering"
           ]
         },
         "when": "editorFocus && flying-fish.enabled && flying-fish.mode == 'leadering'"
       },
+
+
+      {
+        "key": "ctrl+g",
+        "command": "cancelSelection",
+        "when": "editorHasSelection && textInputFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "flying-fish.disableSticky",
+        "when": "flying-fish.sticky && textInputFocus"
+      },
+      {
+        "key": "escape",
+        "command": "flying-fish.disableSticky",
+        "when": "flying-fish.sticky && textInputFocus"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "-workbench.action.gotoLine"
+      },
       {
         "key": "ctrl+f",
-        "command": "cursorRight",
-        "when": "textInputFocus && !inStickySelectionMode"
+        "command": "flying-fish.cursorRight",
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+b",
-        "command": "cursorLeft",
-        "when": "textInputFocus && !inStickySelectionMode"
+        "command": "flying-fish.cursorLeft",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+p",
+        "command": "flying-fish.cursorUp",
+        "when": "textInputFocus"
+      },
+      {
+        "key": "ctrl+n",
+        "command": "flying-fish.cursorDown",
+        "when": "textInputFocus"
       },
       {
         "key": "alt+f",
-        "command": "cursorWordRight",
-        "when": "textInputFocus && !inStickySelectionMode"
+        "command": "flying-fish.cursorWordRight",
+        "when": "textInputFocus"
       },
       {
         "key": "alt+b",
-        "command": "cursorWordLeft",
-        "when": "textInputFocus && !inStickySelectionMode"
-      },
-      {
-        "key": "alt+f",
-        "command": "cursorWordRightSelect",
-        "when": "textInputFocus && inStickySelectionMode"
-      },
-      {
-        "key": "alt+b",
-        "command": "cursorWordLeftSelect",
-        "when": "textInputFocus && inStickySelectionMode"
+        "command": "flying-fish.cursorWordLeft",
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+alt+f",
-        "command": "cursorWordPartRight",
-        "when": "textInputFocus && !inStickySelectionMode"
+        "command": "flying-fish.cursorWordPartRight",
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+alt+b",
-        "command": "cursorWordPartLeft",
-        "when": "textInputFocus && !inStickySelectionMode"
+        "command": "flying-fish.cursorWordPartLeft",
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+a",
-        "command": "cursorHome",
-        "when": "textInputFocus && !inStickySelectionMode"
+        "command": "flying-fish.cursorHome",
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+e",
-        "command": "cursorEnd",
-        "when": "textInputFocus && !inStickySelectionMode"
+        "command": "flying-fish.cursorEnd",
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+alt+,",
-        "command": "cursorTop",
-        "when": "textInputFocus && !inStickySelectionMode"
+        "command": "flying-fish.cursorTop",
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+alt+.",
-        "command": "cursorBottom",
-        "when": "textInputFocus && !inStickySelectionMode"
+        "command": "flying-fish.cursorBottom",
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+backspace",
@@ -229,19 +272,19 @@
       },
       {
         "key": "alt+w",
-        "command": "editor.action.clipboardCopyAction"
+        "command": "flying-fish.clipboardCopyAction"
       },
       {
         "key": "ctrl+w",
-        "command": "editor.action.clipboardCutAction"
+        "command": "flying-fish.clipboardCutAction"
       },
       {
         "key": "ctrl+y",
-        "command": "editor.action.clipboardPasteAction"
+        "command": "flying-fish.clipboardPasteAction"
       },
       {
         "key": "alt+y",
-        "command": "clipboard-manager.editor.pickAndPaste",
+        "command": "flying-fish.pickAndPaste",
         "when": "textInputFocus && !editorReadonly"
       },
       {
@@ -264,13 +307,13 @@
       },
       {
         "key": "ctrl+v",
-        "command": "cursorPageDown",
-        "when": "textInputFocus && !inStickySelectionMode"
+        "command": "flying-fish.cursorPageDown",
+        "when": "textInputFocus"
       },
       {
         "key": "alt+v",
-        "command": "cursorPageUp",
-        "when": "textInputFocus && !inStickySelectionMode"
+        "command": "flying-fish.cursorPageUp",
+        "when": "textInputFocus"
       },
       {
         "key": "ctrl+c ctrl+k",
@@ -364,13 +407,18 @@
       },
       {
         "key": "alt+,",
-        "command": "editor.action.peekDefinition",
-        "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+        "command": "workbench.action.navigateBack",
+        "when": "canNavigateBack"
       },
       {
         "key": "ctrl+,",
-        "command": "sticky-selection.enterStickySelectionMode",
+        "command": "flying-fish.toggleSticky",
         "when": "editorTextFocus"
+      },
+      {
+        "key": "ctrl+x ctrl+x",
+        "command": "flying-fish.switchAnchorAndCursor",
+        "when": "editorHasSelection && editorTextFocus"
       },
       {
         "key": "ctrl+space",
@@ -380,6 +428,16 @@
       {
         "key": "shift+space",
         "command": "workbench.action.quickOpenWithModes"
+      },
+      {
+        "key": "ctrl+shift+alt+p",
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "ctrl+shift+alt+n",
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
       }
     ]
   },
@@ -403,7 +461,6 @@
     "@vscode/test-electron": "^2.4.0"
   },
   "extensionPack": [
-    "ryuta46.multi-command",
-    "ksfunc.vscode-sticky-selection"
+    "EdgardMessias.clipboard-manager"
   ]
 }
